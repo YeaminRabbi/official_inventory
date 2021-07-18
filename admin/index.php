@@ -1,4 +1,4 @@
-<?php require 'session_check.php' ?>
+
 
 <?php require 'd_header.php' ?>
 

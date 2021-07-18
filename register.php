@@ -121,6 +121,13 @@
         
         <button type="submit" name="btn-register_user" class="btn btn-info btn-block">Sign Up</button>
 
+        <hr>
+
+
+        
+
+        <a href="index.php" class="btn btn-success btn-block">Login</a>
+
         
         </form>
         

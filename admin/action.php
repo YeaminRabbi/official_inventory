@@ -123,4 +123,83 @@
 		header("Location: product_list.php?update=on");
 	}
 
+
+
+	//user approval
+	if(isset($_GET['user_approve_id']))
+	{
+		$id = $_GET['user_approve_id'];
+
+		$sql = "UPDATE `user` SET status = 1 WHERE id='$id'";
+
+		$db->query($sql);
+
+		header("Location: user_account_approval_list.php?update=on");
+
+	}
+
+
+
+	//school insert
+	if(isset($_POST['btn-SchoolInsert'])){
+		
+		$school_name = $_POST['school_name'];
+
+		$sql = "INSERT INTO `schools` (`school_name`) VALUES ('$school_name');";
+
+		if ($db->query($sql) === TRUE) {
+		  header('Location: school_insert.php');
+		 
+		} else {
+		  echo "Error: " . $sql . "<br>" . $db->error;
+		}
+
+	}
+
+
+	//school update 
+
+	if(isset($_POST['btn-SchoolUpdate'])){
+		
+		$school_id = $_POST['school_id'];		
+		$school_name = $_POST['school_name'];
+		
+		$sql = "UPDATE `schools` SET school_name = '$school_name' WHERE id='$school_id'";
+
+		$db->query($sql);
+
+		header("Location: school_list.php?update=on");
+	}
+
+
+	//division insert
+	if(isset($_POST['btn-DivisionInsert']))
+	{
+		$division_name = $_POST['division_name'];
+
+		$sql = "INSERT INTO `division` (`division_name`) VALUES ('$division_name');";
+		if ($db->query($sql) === TRUE) {
+		  header('Location: division_insert.php');
+		 
+		} else {
+		  echo "Error: " . $sql . "<br>" . $db->error;
+		}
+	}
+
+	//division update
+	if(isset($_POST['btn-DivisionUpdate']))
+	{
+		$division_id = $_POST['division_id'];		
+		$division_name = $_POST['division_name'];
+		
+		$sql = "UPDATE `division` SET division_name = '$division_name' WHERE id='$division_id'";
+
+		$db->query($sql);
+
+		header("Location: division_list.php?update=on");
+	}
+
+
+
+
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2021 at 11:40 AM
+-- Generation Time: Jul 18, 2021 at 06:11 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.15
 
@@ -68,7 +68,8 @@ INSERT INTO `category` (`id`, `category_name`, `master_category_name`, `created_
 (10, 'Chair', 'FURNITURE', '2021-07-17 07:31:00'),
 (11, 'Table Desk', 'FURNITURE', '2021-07-17 07:31:05'),
 (12, 'Iron Slayer', 'HARDWARE', '2021-07-17 07:31:11'),
-(13, 'White Marker', 'STATIONARY', '2021-07-17 07:31:18');
+(13, 'White Marker', 'STATIONARY', '2021-07-17 07:31:18'),
+(15, 'Computer', 'ELECTRONICS', '2021-07-18 15:22:37');
 
 -- --------------------------------------------------------
 
@@ -78,16 +79,20 @@ INSERT INTO `category` (`id`, `category_name`, `master_category_name`, `created_
 
 CREATE TABLE `division` (
   `id` int(11) NOT NULL,
-  `division_name` varchar(255) NOT NULL
+  `division_name` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `division`
 --
 
-INSERT INTO `division` (`id`, `division_name`) VALUES
-(1, 'CSE'),
-(2, 'EEE');
+INSERT INTO `division` (`id`, `division_name`, `created_at`) VALUES
+(1, 'CSE', '2021-07-18 15:56:00'),
+(2, 'EEE', '2021-07-18 15:56:00'),
+(3, 'DEPT', '2021-07-18 15:58:52'),
+(4, 'ELectic', '2021-07-18 15:58:56'),
+(5, 'Magical', '2021-07-18 15:58:59');
 
 -- --------------------------------------------------------
 
@@ -109,7 +114,11 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`id`, `product_name`, `quantity`, `category_id`, `created_at`) VALUES
 (1, 'RFL chair (plastic)', 10, 10, '2021-07-17 08:11:14'),
-(2, 'Windows Pro Version 10 (Activated)', 150, 6, '2021-07-17 08:11:35');
+(2, 'Windows Pro Version 10 (Activated)', 150, 6, '2021-07-17 08:11:35'),
+(4, 'Monitor', 12, 15, '2021-07-18 15:22:49'),
+(5, 'Mouse', 44, 15, '2021-07-18 15:22:55'),
+(6, 'Keyboard', 33, 15, '2021-07-18 15:23:05'),
+(7, 'Wifi Router', 11, 15, '2021-07-18 15:23:25');
 
 -- --------------------------------------------------------
 
@@ -129,7 +138,12 @@ CREATE TABLE `schools` (
 
 INSERT INTO `schools` (`id`, `school_name`, `created_at`) VALUES
 (1, 'Mohammadpur Preparatory School', '2021-07-17 09:14:43'),
-(2, 'BAF Shaheen College', '2021-07-17 09:14:43');
+(2, 'BAF Shaheen College', '2021-07-17 09:14:43'),
+(3, 'Milstone', '2021-07-18 15:37:58'),
+(4, 'Kakoli School', '2021-07-18 15:39:17'),
+(5, 'VNC', '2021-07-18 15:39:19'),
+(6, 'DRMC', '2021-07-18 15:41:46'),
+(7, 'Preparatory', '2021-07-18 15:46:26');
 
 -- --------------------------------------------------------
 
@@ -155,8 +169,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `contact`, `password`, `user_type`, `school_division`, `status`, `official_id`, `created_id`) VALUES
-(1, 'Helly', 'hlas@gmail.com', '01768002727', '123', 'TEACHER', '1', 0, 111745, '2021-07-17 09:39:41'),
-(2, 'Rabbi', 'rabbi@gmail.com', '01768002727', '123', 'OFFICIAL', '1', 0, 11171248, '2021-07-17 09:40:13');
+(1, 'Helly', 'hlas@gmail.com', '01768002727', '123', 'TEACHER', '1', 1, 111745, '2021-07-17 09:39:41'),
+(2, 'Rabbi', 'rabbi@gmail.com', '01768002727', '123', 'OFFICIAL', '1', 1, 11171248, '2021-07-17 09:40:13'),
+(3, 'Yousuf', 'yousuf@gmail.com', '0154624814', '123', 'OFFICIAL', '1', 1, 12356478, '2021-07-18 07:38:41');
 
 --
 -- Indexes for dumped tables
@@ -212,31 +227,31 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `division`
 --
 ALTER TABLE `division`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `schools`
 --
 ALTER TABLE `schools`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
