@@ -15,7 +15,7 @@
               <!-- for mobile view only first name class="hidden-md-down" -->
               <span class="logged-name"><?php
                     
-                    echo $_SESSION['admin_name'];
+                    echo $_SESSION['user_name'];
                ?></span></span>
               <img src="img/img3.jpg" class="wd-32 rounded-circle" alt="">
             </a>

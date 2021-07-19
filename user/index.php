@@ -1,5 +1,3 @@
-<?php require 'session_check.php' ?>
-
 <?php require 'd_header.php' ?>
 
 <!-- ########## START: LEFT PANEL ########## -->
@@ -21,6 +19,7 @@
 
     <div class="sl-pagebody"><!-- MAIN CONTENT -->
       
+        USER PANEL
     </div><!-- sl-pagebody --><!-- END MAIN CONTENT -->
 
 

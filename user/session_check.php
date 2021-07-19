@@ -3,13 +3,13 @@
 
     session_start();
 
-    if(!empty($_SESSION['admin']))
+    if(!empty($_SESSION['user']))
     {
-        $admin = $_SESSION['admin'];
+        $user = $_SESSION['user'];
     }
     else
     {
-      header('Location: login.php');
+      header('Location: logout.php');
 
     }
 

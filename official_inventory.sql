@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2021 at 06:11 PM
+-- Generation Time: Jul 19, 2021 at 10:28 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.15
 
@@ -42,6 +42,31 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` (`id`, `name`, `email`, `password`, `created_at`) VALUES
 (1, 'rabbi', 'rabbi@gmail.com', '123', '2021-07-17 06:56:58'),
 (2, 'mehnaz', 'mehnaz@gmail.com', '123', '2021-07-17 06:56:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` int(11) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `category_name` varchar(255) NOT NULL,
+  `choose_quantity` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `product_name`, `product_id`, `category_name`, `choose_quantity`, `user_id`) VALUES
+(10, 'Monitor', 4, 'Computer', 4, 2),
+(12, 'Mouse', 5, 'Computer', 5, 2),
+(13, 'Keyboard', 6, 'Computer', 5, 2),
+(14, 'Windows Pro Version 10 (Activated)', 2, 'Windows 10', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -184,6 +209,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -222,6 +253,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `category`

@@ -52,7 +52,7 @@
  
         
         <hr>
-        <a href="register.php" class="text-center" style="text-align: center;">Creat an Account..</a>
+        <a href="register.php" class="btn btn-success btn-block" style="text-align: center;">Creat an Account</a>
       </div><!-- login-wrapper -->
 
     </div><!-- d-flex -->

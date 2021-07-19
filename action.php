@@ -34,4 +34,38 @@
 
  	}
 
+
+	//user login
+	if(isset($_POST['btn-login_user']))
+	{
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+
+		$sql = "Select count(*),id,name from user where email='$email' and password='$password';";
+		$result = mysqli_query($db,$sql);
+		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+		
+
+
+		if($row['count(*)']=="1")
+		{
+
+			session_start();
+			$_SESSION['user']="VERIFIED";
+			$_SESSION['user_id']=$row['id'];
+			$_SESSION['user_name']=$row['name'];
+
+			header("Location: user/index.php");
+		}
+		else
+		{
+			header("Location: index.php?msg=error");
+		}
+
+
+	}
+
+
+
+
 ?>
