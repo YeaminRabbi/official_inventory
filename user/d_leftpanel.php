@@ -50,6 +50,26 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
 
+        <hr>
+
+        <label class="sidebar-label">Requisition</label>
+
+
+        <a href="requisition_records.php" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+            <span class="menu-item-label">Requisition Records</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+
+        <a href="requisition_list.php" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <span class="menu-item-label">Requisition List</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+
+
       </div><!-- sl-sideleft-menu -->
 
       <br>

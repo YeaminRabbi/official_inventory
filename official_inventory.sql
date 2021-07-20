@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2021 at 10:28 AM
+-- Generation Time: Jul 20, 2021 at 07:16 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.15
 
@@ -63,10 +63,14 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `product_name`, `product_id`, `category_name`, `choose_quantity`, `user_id`) VALUES
-(10, 'Monitor', 4, 'Computer', 4, 2),
-(12, 'Mouse', 5, 'Computer', 5, 2),
-(13, 'Keyboard', 6, 'Computer', 5, 2),
-(14, 'Windows Pro Version 10 (Activated)', 2, 'Windows 10', 1, 2);
+(17, 'Monitor', 4, 'Computer', 4, 3),
+(18, 'Mouse', 5, 'Computer', 5, 3),
+(19, 'Keyboard', 6, 'Computer', 30, 3),
+(20, 'Wifi Router', 7, 'Computer', 10, 3),
+(21, 'RFL chair (plastic)', 1, 'Chair', 4, 3),
+(23, 'Monitor', 4, 'Computer', 1, 2),
+(24, 'Mouse', 5, 'Computer', 1, 2),
+(25, 'Keyboard', 6, 'Computer', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -144,6 +148,27 @@ INSERT INTO `product` (`id`, `product_name`, `quantity`, `category_id`, `created
 (5, 'Mouse', 44, 15, '2021-07-18 15:22:55'),
 (6, 'Keyboard', 33, 15, '2021-07-18 15:23:05'),
 (7, 'Wifi Router', 11, 15, '2021-07-18 15:23:25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `requisition_order_list`
+--
+
+CREATE TABLE `requisition_order_list` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `order_name` varchar(255) NOT NULL,
+  `order_contact` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `requisition_order_list`
+--
+
+INSERT INTO `requisition_order_list` (`id`, `user_id`, `order_name`, `order_contact`, `created_at`) VALUES
+(2, 2, 'Jell', '7', '2021-07-20 17:16:36');
 
 -- --------------------------------------------------------
 
@@ -233,6 +258,12 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `requisition_order_list`
+--
+ALTER TABLE `requisition_order_list`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `schools`
 --
 ALTER TABLE `schools`
@@ -258,7 +289,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -277,6 +308,12 @@ ALTER TABLE `division`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `requisition_order_list`
+--
+ALTER TABLE `requisition_order_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `schools`
