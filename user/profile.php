@@ -52,21 +52,35 @@
           <div class="form-layout">
             <div class="row mg-b-25">
               
-              <div class="col-lg-4">
+              <div class="col-lg-6">
                 <div class="form-group">
                   <label class="form-control-label">Name: </label>
                   <input class="form-control" type="text" value="<?= $data['name'] ?>" name="name"  required>
                 </div>
               </div><!-- col-4 -->
 
-              <div class="col-lg-4">
+              <div class="col-lg-6">
                 <div class="form-group">
                   <label class="form-control-label">Contact: </label>
                   <input class="form-control" type="text" value="<?= $data['contact'] ?>" name="contact"  required>
                 </div>
               </div><!-- col-4 -->
 
-              <div class="col-lg-4">
+              <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Official ID: </label>
+                    <input class="form-control" type="text" value="<?= $data['official_id'] ?>" name="official_id">
+                  </div>
+                </div><!-- col-4 -->
+
+              <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Designation: </label>
+                    <input class="form-control" type="text" value="<?= $data['designation'] ?>" name="designation">
+                  </div>
+                </div><!-- col-4 -->
+
+              <div class="col-lg-6">
                 <div class="form-group">
                   <label class="form-control-label">Email: </label>
                   <input class="form-control disabled" type="text" value="<?= $data['email'] ?>" name="email" disabled>
@@ -75,14 +89,14 @@
               
              
 
-              <div class="col-lg-4">
+              <div class="col-lg-6">
                 <div class="form-group">
                   <label class="form-control-label">Password: </label>
                   <input class="form-control" type="text" value="<?= $data['password'] ?>" name="password"  required>
                 </div>
               </div><!-- col-4 -->
 
-               <div class="col-lg-4">
+               <div class="col-lg-6">
                 <div class="form-group">
                   <label class="form-control-label">User Type: </label>
                   <input class="form-control" type="text" value="<?= $data['user_type'] ?>" name="user_type"  disabled>
@@ -99,7 +113,7 @@
 
                 ?>
                 
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label">School Name: </label>
                     <input class="form-control" type="text" value="<?= $school_name['school_name'] ?>" name="school_name"  disabled>
@@ -117,7 +131,7 @@
                     
                 ?>
 
-                 <div class="col-lg-4">
+                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label">Division Name: </label>
                     <input class="form-control" type="text" value="<?= $division_name['division_name'] ?>" name="division_name"  disabled>
@@ -130,12 +144,7 @@
               ?>
 
 
-              <div class="col-lg-4">
-                  <div class="form-group">
-                    <label class="form-control-label">Official ID: </label>
-                    <input class="form-control" type="text" value="<?= $data['official_id'] ?>" name="official_id">
-                  </div>
-                </div><!-- col-4 -->
+              
              
             </div><!-- row -->
             <input type="hidden" name="user_id" value="<?= $user_id ?>">

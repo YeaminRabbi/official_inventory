@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2021 at 07:16 PM
+-- Generation Time: Jul 21, 2021 at 11:22 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.15
 
@@ -67,10 +67,7 @@ INSERT INTO `cart` (`id`, `product_name`, `product_id`, `category_name`, `choose
 (18, 'Mouse', 5, 'Computer', 5, 3),
 (19, 'Keyboard', 6, 'Computer', 30, 3),
 (20, 'Wifi Router', 7, 'Computer', 10, 3),
-(21, 'RFL chair (plastic)', 1, 'Chair', 4, 3),
-(23, 'Monitor', 4, 'Computer', 1, 2),
-(24, 'Mouse', 5, 'Computer', 1, 2),
-(25, 'Keyboard', 6, 'Computer', 1, 2);
+(21, 'RFL chair (plastic)', 1, 'Chair', 4, 3);
 
 -- --------------------------------------------------------
 
@@ -142,12 +139,12 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `product_name`, `quantity`, `category_id`, `created_at`) VALUES
-(1, 'RFL chair (plastic)', 10, 10, '2021-07-17 08:11:14'),
-(2, 'Windows Pro Version 10 (Activated)', 150, 6, '2021-07-17 08:11:35'),
-(4, 'Monitor', 12, 15, '2021-07-18 15:22:49'),
+(1, 'RFL chair (plastic)', 0, 10, '2021-07-17 08:11:14'),
+(2, 'Windows Pro Version 10 (Activated)', 50, 6, '2021-07-17 08:11:35'),
+(4, 'Monitor', 1, 15, '2021-07-18 15:22:49'),
 (5, 'Mouse', 44, 15, '2021-07-18 15:22:55'),
-(6, 'Keyboard', 33, 15, '2021-07-18 15:23:05'),
-(7, 'Wifi Router', 11, 15, '2021-07-18 15:23:25');
+(6, 'Keyboard', 10, 15, '2021-07-18 15:23:05'),
+(7, 'Wifi Router', 10, 15, '2021-07-18 15:23:25');
 
 -- --------------------------------------------------------
 
@@ -160,15 +157,47 @@ CREATE TABLE `requisition_order_list` (
   `user_id` int(11) NOT NULL,
   `order_name` varchar(255) NOT NULL,
   `order_contact` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `requisition_order_list`
 --
 
-INSERT INTO `requisition_order_list` (`id`, `user_id`, `order_name`, `order_contact`, `created_at`) VALUES
-(2, 2, 'Jell', '7', '2021-07-20 17:16:36');
+INSERT INTO `requisition_order_list` (`id`, `user_id`, `order_name`, `order_contact`, `created_at`, `status`) VALUES
+(12, 2, 'Rabbi', '01768002727', '2021-07-21 21:03:29', 0),
+(13, 2, 'Jelly ', '1425', '2021-07-21 21:17:53', 0),
+(14, 2, 'Rabbi', '01768002727', '2021-07-21 21:18:45', 0),
+(15, 2, 'Pajji', '546', '2021-07-21 21:21:16', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `requisition_order_product_list`
+--
+
+CREATE TABLE `requisition_order_product_list` (
+  `id` int(11) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `category_name` varchar(255) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `requisition_order_product_list`
+--
+
+INSERT INTO `requisition_order_product_list` (`id`, `product_name`, `category_name`, `order_id`, `quantity`) VALUES
+(8, 'Windows Pro Version 10 (Activated)', 'Windows 10', 12, 100),
+(9, 'Monitor', 'Computer', 12, 2),
+(10, 'Keyboard', 'Computer', 12, 3),
+(11, 'Wifi Router', 'Computer', 12, 1),
+(12, 'Monitor', 'Computer', 13, 9),
+(13, 'Keyboard', 'Computer', 13, 20),
+(14, 'RFL chair (plastic)', 'Chair', 14, 5),
+(15, 'RFL chair (plastic)', 'Chair', 15, 5);
 
 -- --------------------------------------------------------
 
@@ -211,6 +240,7 @@ CREATE TABLE `user` (
   `school_division` varchar(255) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
   `official_id` int(11) NOT NULL,
+  `designation` varchar(255) DEFAULT NULL,
   `created_id` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -218,10 +248,11 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `contact`, `password`, `user_type`, `school_division`, `status`, `official_id`, `created_id`) VALUES
-(1, 'Helly', 'hlas@gmail.com', '01768002727', '123', 'TEACHER', '1', 1, 111745, '2021-07-17 09:39:41'),
-(2, 'Rabbi', 'rabbi@gmail.com', '01768002727', '123', 'OFFICIAL', '1', 1, 11171248, '2021-07-17 09:40:13'),
-(3, 'Yousuf', 'yousuf@gmail.com', '0154624814', '123', 'OFFICIAL', '1', 1, 12356478, '2021-07-18 07:38:41');
+INSERT INTO `user` (`id`, `name`, `email`, `contact`, `password`, `user_type`, `school_division`, `status`, `official_id`, `designation`, `created_id`) VALUES
+(1, 'Helly', 'hlas@gmail.com', '01768002727', '123', 'TEACHER', '1', 1, 111745, 'Professor', '2021-07-17 09:39:41'),
+(2, 'Rabbi', 'rabbi@gmail.com', '01768002727', '123', 'OFFICIAL', '1', 1, 1425, 'Manager XX', '2021-07-17 09:40:13'),
+(3, 'Yousuf', 'yousuf@gmail.com', '0154624814', '123', 'OFFICIAL', '1', 1, 12356478, 'CEO', '2021-07-18 07:38:41'),
+(4, 'Bejji', 'bejji@gmail.com', '123', '123', 'OFFICIAL', '4', 0, 11171248, 'Web Developer', '2021-07-21 20:10:48');
 
 --
 -- Indexes for dumped tables
@@ -264,6 +295,12 @@ ALTER TABLE `requisition_order_list`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `requisition_order_product_list`
+--
+ALTER TABLE `requisition_order_product_list`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `schools`
 --
 ALTER TABLE `schools`
@@ -289,7 +326,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -313,7 +350,13 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `requisition_order_list`
 --
 ALTER TABLE `requisition_order_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `requisition_order_product_list`
+--
+ALTER TABLE `requisition_order_product_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `schools`
@@ -325,7 +368,7 @@ ALTER TABLE `schools`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

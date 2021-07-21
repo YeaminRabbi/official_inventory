@@ -55,7 +55,7 @@
         <label class="sidebar-label">Requisition</label>
 
 
-        <a href="requisition_records.php" class="sl-menu-link">
+        <a href="requisition_history.php" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="fa fa-bars" aria-hidden="true"></i>
             <span class="menu-item-label">Requisition Records</span>

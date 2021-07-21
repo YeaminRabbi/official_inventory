@@ -8,6 +8,7 @@
  		$email = $_POST['email'];
  		$user_type = $_POST['user_type'];
  		$contact = $_POST['contact'];
+ 		$designation = $_POST['designation'];
 
  		
  		if(!empty($_POST['school']))
@@ -22,7 +23,7 @@
  		$official_id = $_POST['official_id'];
  		$password = $_POST['password'];
 
- 		$sql = "INSERT INTO user (name, email, contact, user_type, school_division, official_id,password) VALUES ('$name','$email','$contact','$user_type','$school_division','$official_id','$password')";
+ 		$sql = "INSERT INTO user (name, email, contact, user_type, school_division, official_id,designation,password) VALUES ('$name','$email','$contact','$user_type','$school_division','$official_id','$designation','$password')";
 
 		if ($db->query($sql) === TRUE) {
 		  header('Location: index.php?msg=inserted');
@@ -41,7 +42,7 @@
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 
-		$sql = "Select count(*),id,name from user where email='$email' and password='$password';";
+		$sql = "Select count(*),id,name from user where email='$email' and password='$password' and status =1;";
 		$result = mysqli_query($db,$sql);
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		
@@ -59,7 +60,7 @@
 		}
 		else
 		{
-			header("Location: index.php?msg=error");
+			header("Location: index.php?emsg=error");
 		}
 
 

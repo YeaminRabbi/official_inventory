@@ -108,7 +108,9 @@
                     </select>
                 </div>
           
-
+          <div class="form-group">
+            <input type="text" class="form-control" name="designation" placeholder="Enter your Designation">
+          </div><!-- form-group -->
 
           <div class="form-group">
             <input type="text" class="form-control" name="official_id" placeholder="Enter your Official ID">

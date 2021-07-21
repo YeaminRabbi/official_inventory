@@ -44,7 +44,19 @@
             {
           ?>
 
-           <p style="color: red;font-weight: 700;">Wrong Credentials!</p>
+           <p style="color: green;font-weight: 700;">Login with Valid Credentials!</p>
+          <?php 
+            }
+          ?>
+
+
+          <?php
+
+            if(isset($_GET['emsg']))
+            {
+          ?>
+
+           <p style="color: red;font-weight: 700;">Invalid Credentials!</p>
           <?php 
             }
           ?>

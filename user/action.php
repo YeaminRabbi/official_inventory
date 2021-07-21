@@ -49,9 +49,11 @@
 		$contact = $_POST['contact'];
 		$password = $_POST['password'];
 		$official_id = $_POST['official_id'];
+		$designation = $_POST['designation'];
 
 
-		$sql = "UPDATE `user` SET name = '$name' , contact = '$contact',password = '$password', official_id = '$official_id' WHERE id='$user_id'";
+
+		$sql = "UPDATE `user` SET name = '$name' , contact = '$contact',password = '$password', official_id = '$official_id' , designation='$designation' WHERE id='$user_id'";
 
 		$db->query($sql);
 
@@ -103,8 +105,35 @@
 		$sql = "INSERT INTO requisition_order_list (user_id, order_name, order_contact) VALUES ('$user_id','$requisition_name','$requisition_contact')";
 		
 		$db->query($sql);
+		$order_id = $db->insert_id;
+		
+		$cart_list = fetch_all_data_usingPDO($pdo,"select * from cart where user_id = '$user_id'");
 
-		header("Location: index.php?orderConfirm=on");
+		foreach ($cart_list as $key => $data) {
+			
+
+			$product_name = $data['product_name'];
+			$category_name = $data['category_name'];
+			$quantity = $data['choose_quantity'];
+			$sql = "INSERT INTO requisition_order_product_list (product_name, category_name, order_id, quantity) VALUES ('$product_name','$category_name','$order_id', '$quantity')";
+			$db->query($sql);
+
+
+			//updating the product quantity from the product table
+			$product_id = $data['product_id'];
+			$updating_product_quantity_sql = "UPDATE `product` SET quantity = quantity - '$quantity' WHERE id='$product_id'";
+			$db->query($updating_product_quantity_sql);
+
+
+			//deleting from the cart
+			$cart_id = $data['id'];
+			$delete_from_cart_sql = "delete from cart where id='$cart_id';";
+			$db->query($delete_from_cart_sql);
+
+		}
+
+
+		header("Location: requisition_history.php?orderConfirm=on");
 
 
 	}

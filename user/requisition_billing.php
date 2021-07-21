@@ -150,7 +150,7 @@
             </div><!-- row -->
             <input type="hidden" name="user_id" value="<?= $user_id ?>">
             <div class="form-layout-footer">
-              <button type="submit" class="btn btn-success mg-r-5" name="btn-RequisitionConfirm">Update Profile</button>
+              <button type="submit" class="btn btn-success mg-r-5" name="btn-RequisitionConfirm">Confirm Order</button>
               
             </div><!-- form-layout-footer -->
           </div><!-- form-layout -->
