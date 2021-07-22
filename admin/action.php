@@ -200,6 +200,17 @@
 	}
 
 
+	//confirming order 
+	if($_GET['confirm_order_id'])
+	{
+		$id = $_GET['confirm_order_id'];
+		$sql = "UPDATE `requisition_order_list` SET status = 1 WHERE id='$id'";
+		$db->query($sql);
+
+		header("Location: order_pending.php?orderConfirm=on");
+
+	}
+
 
 
 ?>

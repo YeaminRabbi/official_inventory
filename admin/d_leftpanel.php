@@ -80,6 +80,20 @@
         </ul>
 
 
+
+        <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
+           <i class="fa fa-first-order" aria-hidden="true"></i>
+            <span class="menu-item-label">Requisition</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="order_pending.php" class="nav-link">Pending</a></li>
+          <li class="nav-item"><a href="order_confirmed.php" class="nav-link">Delivered</a></li>
+        </ul>
+
+
       </div><!-- sl-sideleft-menu -->
 
       <br>
