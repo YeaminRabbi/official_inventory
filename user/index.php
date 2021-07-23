@@ -1,3 +1,9 @@
+<?php 
+  
+  header('Location: product.php?product_master_category=ELECTRONICS');
+?>
+
+
 <?php require 'd_header.php' ?>
 
 <!-- ########## START: LEFT PANEL ########## -->
