@@ -213,4 +213,53 @@
 
 
 
+
+	//creating an user account from admin panel
+
+	if(isset($_POST['btn-USERCREATE']))
+	{
+		$name = $_POST['name'];
+ 		$email = $_POST['email'];
+ 		$user_type = $_POST['user_type'];
+ 		$contact = $_POST['contact'];
+ 		$designation = $_POST['designation'];
+
+ 		
+ 		if(!empty($_POST['school']))
+ 		{
+ 			$school_division = $_POST['school'];
+ 		}
+ 		else
+ 		{
+ 			$school_division = $_POST['division'];
+ 		}
+
+ 		$official_id = $_POST['official_id'];
+ 		$password = $_POST['password'];
+
+ 		$sql = "INSERT INTO user (name, email, contact, user_type, school_division,status, official_id,designation,password) VALUES ('$name','$email','$contact','$user_type','$school_division',1,'$official_id','$designation','$password')";
+
+		if ($db->query($sql) === TRUE) {
+		  header('Location: user_account_create.php?msg=inserted');
+		 
+		} else {
+		  echo "Error: " . $sql . "<br>" . $db->error;
+		}
+
+	}
+
+
+
+	if(isset($_GET['user_approve_id_delete']))
+	{
+		$id = $_GET['user_approve_id_delete'];
+
+
+		$sql = "delete from user where id='$id';";
+		$db->query($sql);
+		header("Location: user_account_approval_list.php?delete=on");	
+
+
+	}
+
 ?>

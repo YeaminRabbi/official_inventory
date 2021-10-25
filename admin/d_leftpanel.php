@@ -49,6 +49,7 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="user_account_create.php" class="nav-link">Add User</a></li>
           <li class="nav-item"><a href="user_account_approval_list.php" class="nav-link">Account Approval</a></li>
           <li class="nav-item"><a href="user_account_list.php" class="nav-link">User List</a></li>
         </ul>

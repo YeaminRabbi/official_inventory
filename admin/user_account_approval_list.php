@@ -91,6 +91,7 @@
                       <td>
                         
                         <a href="action.php?user_approve_id=<?= $data['id']  ?>" class="btn btn-success">Approve</a>
+                        <a href="action.php?user_approve_id_delete=<?= $data['id']  ?>" class="btn btn-danger">Delete</a>
                         
                       </td>
                     </tr>
