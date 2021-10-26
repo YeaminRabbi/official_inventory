@@ -68,6 +68,9 @@
                   <th >Contact</th>
                   <th >User Type</th>
                   <th >Official ID</th>
+                  <th >School/Division</th>
+                  <th >Designation</th>
+
 
                   
                 </tr>
@@ -85,6 +88,27 @@
                       <td><?php echo $data['contact']; ?></td>
                       <td><?php echo $data['user_type']; ?></td>
                       <td><?php echo $data['official_id']; ?></td>
+                      <td>
+                          <?php 
+
+                             if($data['user_type'] == "TEACHER")
+                             {
+
+                              $school_id = $data['school_division'];
+                              $school =fetch_all_data_usingDB($db, "select * from schools where id = '$school_id';");
+                               echo $school['school_name'];
+
+                             }
+                             else if($data['user_type'] == "OFFICIAL")
+                             {
+                                $division_id = $data['school_division'];
+                                $division =fetch_all_data_usingDB($db, "select * from division where id = '$division_id';");
+                                echo $division['division_name'];
+                             }
+
+                          ?>  
+                      </td>
+                      <td><?php echo $data['designation']; ?></td>
                       
                       
                     </tr>
