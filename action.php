@@ -66,7 +66,52 @@
 
 	}
 
+	// checking if email exist or not
+	if(isset($_POST['btn-forgotpassword']))
+	{
+		$email = $_POST['email'];
+
+		$check = fetch_all_data_usingDB($db, "select count(*) as 'count' from user where email = '$email'");
+
+		if($check['count'] == '1')
+		{
+			session_start();
+			$_SESSION['CHANGE_EMAIL']=$email;
+
+			header('Location: change_password.php');
+
+		}
+		else
+		{
+			header('Location: forget_password.php?emsg=error');
+		}
+
+	}
 
 
+	//changing the account password from the email
+	if(isset($_POST['btn-changepassword']))
+	{
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+
+		$sql = "UPDATE `user` SET password = '$password' WHERE email='$email'";
+
+		$db->query($sql);
+
+		header("Location: index.php?chmsg=success");
+
+
+
+	}
+
+
+	 function fetch_all_data_usingDB($db,$sql){
+			
+			$result = mysqli_query($db,$sql);
+		    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+		    mysqli_free_result($result);
+		    return $row;
+		}
 
 ?>
